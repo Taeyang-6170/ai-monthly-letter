@@ -15,6 +15,8 @@
   </script>
 
   <style>
+    @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+
     :root {
       --bg: #f6f8fb;
       --surface: #ffffff;
@@ -52,7 +54,7 @@
 
     body {
       margin: 0;
-      font-family: 'NanumGothic', 'Malgun Gothic', Arial, sans-serif;
+      font-family: 'Pretendard', 'Malgun Gothic', 'Apple SD Gothic Neo', Arial, sans-serif;
       color: var(--text);
       background:
         radial-gradient(circle at top left, rgba(37, 99, 235, 0.07), transparent 32%),
@@ -79,7 +81,7 @@
       top: 0;
       z-index: 50;
       backdrop-filter: blur(12px);
-      background: rgba(255, 255, 255, 0.86);
+      background: rgba(255, 255, 255, 0.96);
       border-bottom: 1px solid rgba(229, 231, 235, 0.9);
     }
 
@@ -162,6 +164,12 @@
       display: flex;
       align-items: center;
       padding: 70px 0 84px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+    }
+
+    :root[data-theme="dark"] .hero {
+      background: var(--bg);
     }
 
     .hero-head {
@@ -189,23 +197,28 @@
     .thumb-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
+      gap: 4px;
+      background: var(--line);
+      border: 1px solid var(--line);
     }
 
     .hero-thumb {
       position: relative;
       min-height: 430px;
-      border-radius: 24px;
+      border-radius: 0;
       overflow: hidden;
       background: linear-gradient(150deg, #2b5bd7 0%, #142033 100%);
-      box-shadow: var(--shadow);
+      box-shadow: none;
       isolation: isolate;
       transition: 0.22s ease;
     }
 
     .hero-thumb:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 18px 44px rgba(31, 41, 55, 0.16);
+      transform: none;
+    }
+
+    .hero-thumb:hover img {
+      transform: scale(1.035);
     }
 
     .hero-thumb img {
@@ -215,6 +228,9 @@
       height: 100%;
       object-fit: cover;
       z-index: -2;
+      transform: scale(1);
+      transition: transform 0.35s ease;
+      will-change: transform;
     }
 
     .hero-thumb::before {
@@ -248,16 +264,41 @@
 
     .thumb-arrow {
       position: absolute;
-      top: 18px;
-      right: 18px;
+      top: 16px;
+      right: 16px;
       width: 44px;
       height: 44px;
       border-radius: 999px;
       display: grid;
       place-items: center;
-      background: rgba(255, 255, 255, 0.88);
-      color: var(--primary-2);
-      font-weight: 900;
+      background: rgba(255, 255, 255, 0.24);
+      border: 0;
+      color: #ffffff;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.16);
+    }
+
+    .thumb-search-icon {
+      width: 19px;
+      height: 19px;
+      display: block;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    :root[data-theme="dark"] .thumb-grid {
+      background: #243044;
+      border-color: #243044;
+    }
+
+    :root[data-theme="dark"] .thumb-arrow {
+      background: rgba(255, 255, 255, 0.16);
+      color: #ffffff;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.24);
     }
 
     .thumb-content {
@@ -573,15 +614,37 @@
         text-align: left;
       }
 
-      .thumb-grid,
       .grid-2,
       .grid-3,
       .model-grid {
         grid-template-columns: 1fr;
       }
 
+      .thumb-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 4px;
+      }
+
       .hero-thumb {
-        min-height: 360px;
+        min-height: 300px;
+      }
+
+      .thumb-content {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+      }
+
+      .hero-thumb h2 {
+        font-size: clamp(21px, 6vw, 28px);
+      }
+
+      .thumb-label {
+        font-size: 11px;
+      }
+
+      .hero-thumb p {
+        font-size: 12px;
       }
 
       .section {
@@ -630,21 +693,149 @@
     }
 
     .detail-section {
-      padding: 52px 0;
+      padding: 0;
       border-top: 1px solid var(--line);
+      background: var(--bg);
+    }
+
+    .detail-section > .container {
+      width: 100%;
+      max-width: none;
     }
 
     .detail-card {
       background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      padding: 34px;
-      box-shadow: 0 14px 34px rgba(16, 24, 40, 0.06);
+      border: 0;
+      border-bottom: 1px solid var(--line);
+      border-radius: 0;
+      padding: 58px max(28px, calc((100vw - var(--max)) / 2 + 32px));
+      box-shadow: none;
       overflow: hidden;
     }
 
+    main > .detail-section:nth-of-type(odd) .detail-card {
+      background: #fbfdff;
+    }
+
+    :root[data-theme="dark"] main > .detail-section:nth-of-type(odd) .detail-card {
+      background: #0f172a;
+    }
+
     :root[data-theme="dark"] .detail-card {
-      box-shadow: var(--shadow);
+      box-shadow: none;
+    }
+
+
+
+    /* ===== LEVEL 가로 배너 ===== */
+    .level-banner {
+      position: relative;
+      margin: -58px calc(-1 * max(28px, calc((100vw - var(--max)) / 2 + 32px))) 38px;
+      padding: 34px max(28px, calc((100vw - var(--max)) / 2 + 32px));
+      color: #ffffff;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+      isolation: isolate;
+    }
+
+    .level-banner::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 46%, #0f172a 100%);
+    }
+
+    .level-banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(circle at 16% 24%, rgba(255, 255, 255, 0.18), transparent 26%),
+        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: auto, 42px 42px, 42px 42px;
+      opacity: 0.7;
+    }
+
+    .level-banner-1::before {
+      background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 48%, #0f172a 100%);
+    }
+
+    .level-banner-2::before {
+      background: linear-gradient(135deg, #065f46 0%, #10b981 48%, #102a43 100%);
+    }
+
+    .level-banner-3::before {
+      background: linear-gradient(135deg, #312e81 0%, #7c3aed 48%, #111827 100%);
+    }
+
+    .level-banner-bonus::before {
+      background: linear-gradient(135deg, #111827 0%, #334155 52%, #020617 100%);
+    }
+
+    .level-banner-inner {
+      width: min(100%, var(--max));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: end;
+      gap: 24px;
+    }
+
+    .level-kicker {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .level-kicker span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 28px;
+      padding: 6px 11px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.01em;
+    }
+
+    .level-banner h2 {
+      margin: 0;
+      font-size: clamp(28px, 4.6vw, 48px);
+      line-height: 1.1;
+      letter-spacing: -0.06em;
+      word-break: keep-all;
+    }
+
+    .level-banner p {
+      max-width: 720px;
+      margin: 12px 0 0;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 16px;
+      font-weight: 700;
+      word-break: keep-all;
+    }
+
+    .level-banner-index {
+      width: 86px;
+      height: 86px;
+      display: grid;
+      place-items: center;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: #ffffff;
+      font-size: 34px;
+      font-weight: 1000;
+      line-height: 1;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.18);
     }
 
     .detail-title {
@@ -738,7 +929,7 @@
     .model-guide {
       background: var(--surface-2);
       border: 1px solid var(--line);
-      border-radius: 22px;
+      border-radius: 16px;
       padding: 22px;
     }
 
@@ -994,6 +1185,9 @@
 
     .level-footer p {
       margin: 0;
+      line-height: 1.7;
+      word-break: keep-all;
+      overflow-wrap: break-word;
     }
 
     .feedback {
@@ -1066,12 +1260,12 @@
       }
 
       .detail-section {
-        padding: 34px 0;
+        padding: 0;
       }
 
       .detail-card {
-        border-radius: 24px;
-        padding: 22px;
+        border-radius: 0;
+        padding: 34px 18px;
       }
 
       .detail-title {
@@ -1103,7 +1297,7 @@
       .example-box,
       .model-guide {
         padding: 18px;
-        border-radius: 18px;
+        border-radius: 14px;
       }
 
       .letter-prompt-head {
@@ -1138,7 +1332,7 @@
 
     @media (max-width: 390px) {
       .detail-card {
-        padding: 18px;
+        padding: 30px 16px;
       }
 
       .detail-title {
@@ -1164,6 +1358,36 @@
         flex: 1;
       }
     }
+
+
+    @media (max-width: 760px) {
+      .level-banner {
+        margin: -34px calc(-1 * max(22px, calc((100vw - var(--max)) / 2 + 32px))) 28px;
+        padding: 28px max(22px, calc((100vw - var(--max)) / 2 + 32px));
+      }
+
+      .level-banner-inner {
+        grid-template-columns: 1fr;
+        align-items: start;
+        gap: 18px;
+      }
+
+      .level-banner-index {
+        width: 60px;
+        height: 60px;
+        border-radius: 18px;
+        font-size: 24px;
+      }
+
+      .level-banner h2 {
+        font-size: 28px;
+      }
+
+      .level-banner p {
+        font-size: 15px;
+      }
+    }
+
 </style>
 </head>
 
@@ -1195,7 +1419,12 @@
         <div class="thumb-grid">
           <a class="hero-thumb" href="#thumbnail">
             <img src="assets/thumb-01.png" alt="레벨 1 대표 이미지" />
-            <div class="thumb-arrow">↘</div>
+            <div class="thumb-arrow" aria-hidden="true">
+              <svg class="thumb-search-icon" viewBox="0 0 24 24">
+                <circle cx="10.5" cy="10.5" r="6.5"></circle>
+                <path d="M15.5 15.5L21 21"></path>
+              </svg>
+            </div>
             <div class="thumb-content">
               <div class="thumb-label">LEVEL 1</div>
               <h2>클릭 유발하는<br><span class="point"> 썸네일</span> 제작</h2>
@@ -1205,7 +1434,12 @@
 
           <a class="hero-thumb" href="#handwriting">
             <img src="assets/thumb-02.png" alt="레벨 2 대표 이미지" />
-            <div class="thumb-arrow">↘</div>
+            <div class="thumb-arrow" aria-hidden="true">
+              <svg class="thumb-search-icon" viewBox="0 0 24 24">
+                <circle cx="10.5" cy="10.5" r="6.5"></circle>
+                <path d="M15.5 15.5L21 21"></path>
+              </svg>
+            </div>
             <div class="thumb-content">
               <div class="thumb-label">LEVEL 2</div>
               <h2>손필기 →<br><span class="point">PPT/문서</span> 변환</h2>
@@ -1215,7 +1449,12 @@
 
           <a class="hero-thumb" href="#llm-skill">
             <img src="assets/thumb-03.png" alt="레벨 3 대표 이미지" />
-            <div class="thumb-arrow">↘</div>
+            <div class="thumb-arrow" aria-hidden="true">
+              <svg class="thumb-search-icon" viewBox="0 0 24 24">
+                <circle cx="10.5" cy="10.5" r="6.5"></circle>
+                <path d="M15.5 15.5L21 21"></path>
+              </svg>
+            </div>
             <div class="thumb-content">
               <div class="thumb-label">LEVEL 3</div>
               <h2>답변 품질 UP<br><span class="point">LLM 스킬</span></h2>
@@ -1225,7 +1464,12 @@
 
           <a class="hero-thumb" href="#models">
             <img src="assets/thumb-04.png" alt="보너스 레벨 대표 이미지" />
-            <div class="thumb-arrow">↘</div>
+            <div class="thumb-arrow" aria-hidden="true">
+              <svg class="thumb-search-icon" viewBox="0 0 24 24">
+                <circle cx="10.5" cy="10.5" r="6.5"></circle>
+                <path d="M15.5 15.5L21 21"></path>
+              </svg>
+            </div>
             <div class="thumb-content">
               <div class="thumb-label">BONUS LEVEL</div>
               <h2>이번 달<br><span class="point">신규 LLM 모델</span></h2>
@@ -1242,8 +1486,19 @@
     <section id="thumbnail" class="detail-section">
       <div class="container">
         <div class="detail-card">
-          <h2 class="detail-title"><span class="detail-num">1</span><span>LEVEL 1. 클릭 유발하는 썸네일 제작</span></h2>
-          <p class="detail-lead">홍보 이미지, 카드뉴스, 교육 안내 배너 제작 시 바로 복사해서 사용할 수 있는 이미지 생성 프롬프트입니다.</p>
+          <div class="level-banner level-banner-1">
+            <div class="level-banner-inner">
+              <div>
+                <div class="level-kicker">
+                  <span>LEVEL 1</span>
+                  <span>IMAGE PROMPT</span>
+                </div>
+                <h2>클릭 유발하는 썸네일 제작</h2>
+                <p>홍보 이미지, 카드뉴스, 교육 안내 배너 제작 시 바로 복사해서 사용할 수 있는 이미지 생성 프롬프트입니다.</p>
+              </div>
+              <div class="level-banner-index">01</div>
+            </div>
+          </div>
 
           <div class="badges">
             <span class="level-badge">이미지 생성</span>
@@ -1310,13 +1565,24 @@
     <section id="handwriting" class="detail-section">
       <div class="container">
         <div class="detail-card">
-          <h2 class="detail-title"><span class="detail-num">2</span><span>LEVEL 2. 손필기 → PPT/문서 변환</span></h2>
-          <p class="detail-lead">회의 메모, 보드판 필기, 러프한 초안을 구조화해서 문서 또는 발표자료 초안으로 바꾸는 템플릿입니다.</p>
+          <div class="level-banner level-banner-2">
+            <div class="level-banner-inner">
+              <div>
+                <div class="level-kicker">
+                  <span>LEVEL 2</span>
+                  <span>DOCUMENT WORKFLOW</span>
+                </div>
+                <h2>손필기 → PPT/문서 변환</h2>
+                <p>회의 메모, 보드판 필기, 러프한 초안을 구조화해서 문서 또는 발표자료 초안으로 바꾸는 템플릿입니다.</p>
+              </div>
+              <div class="level-banner-index">02</div>
+            </div>
+          </div>
 
           <div class="badges">
-            <span class="level-badge">문서용</span>
-            <span class="level-badge">PPT용</span>
-            <span class="level-badge">회의록용</span>
+            <span class="level-badge">문서 변환</span>
+            <span class="level-badge orange">난이도: 초급</span>
+            <span class="level-badge green">실무 적용</span>
           </div>
 
           <div class="info-box">
@@ -1382,8 +1648,25 @@
     <section id="llm-skill" class="detail-section">
       <div class="container">
         <div class="detail-card">
-          <h2 class="detail-title"><span class="detail-num">3</span><span>LEVEL 3. 답변 품질 UP LLM 스킬</span></h2>
-          <p class="detail-lead">환각을 줄이고, 답변 범위를 제한하고, 출력 형식을 고정하는 것만으로 결과 품질과 비용 효율이 함께 좋아집니다.</p>
+          <div class="level-banner level-banner-3">
+            <div class="level-banner-inner">
+              <div>
+                <div class="level-kicker">
+                  <span>LEVEL 3</span>
+                  <span>QUALITY CONTROL</span>
+                </div>
+                <h2>답변 품질 UP LLM 스킬</h2>
+                <p>환각을 줄이고, 답변 범위를 제한하고, 출력 형식을 고정하는 것만으로 결과 품질과 비용 효율이 함께 좋아집니다.</p>
+              </div>
+              <div class="level-banner-index">03</div>
+            </div>
+          </div>
+
+          <div class="badges">
+            <span class="level-badge">품질 제어</span>
+            <span class="level-badge orange">난이도: 중급</span>
+            <span class="level-badge green">정확도 향상</span>
+          </div>
 
           <div class="skill-grid">
             <div class="skill-card">
@@ -1442,8 +1725,19 @@
     <section id="models" class="detail-section">
       <div class="container">
         <div class="detail-card">
-          <h2 class="detail-title"><span class="detail-num">4</span><span>BONUS LEVEL. 이번 달 신규 LLM 모델</span></h2>
-          <p class="detail-lead">실제 운영 시 해당 월의 플랫폼 업데이트 내역으로 교체하면 됩니다. 모델별 특징과 추천 용도를 함께 안내합니다.</p>
+          <div class="level-banner level-banner-bonus">
+            <div class="level-banner-inner">
+              <div>
+                <div class="level-kicker">
+                  <span>BONUS LEVEL</span>
+                  <span>MODEL UPDATE</span>
+                </div>
+                <h2>이번 달 신규 LLM 모델</h2>
+                <p>실제 운영 시 해당 월의 플랫폼 업데이트 내역으로 교체하면 됩니다. 모델별 특징과 추천 용도를 함께 안내합니다.</p>
+              </div>
+              <div class="level-banner-index">B</div>
+            </div>
+          </div>
 
           <div class="model-grid-compact">
             <div class="model-card-compact">
@@ -1507,7 +1801,7 @@
             </ul>
           </div>
 
-          <div class="next-row"><a class="next-btn" href="#home">처음으로 돌아가기 ↑</a></div>
+          <div class="next-row"><a class="next-btn" href="#home">상단으로 돌아가기 ↑</a></div>
         </div>
       </div>
     </section>
@@ -1571,11 +1865,14 @@
   <footer class="level-footer">
     <div class="container">
       <p><strong>[레벨업] 조선대학교 통합 AI 플랫폼 역량 강화 레터</strong></p>
-      <p>이번 레터는 조선대학교 구성원이 통합 AI 플랫폼을 더 쉽게 이해하고, 업무·수업·학습 장면에서 바로 활용할 수 있도록 구성했습니다.</p>
+      <p>
+        본 레터는 2026학년도 조선대학교 대학혁신지원사업의 일환으로 운영되는<wbr>
+        통합 AI 플랫폼 이용자의 활용 역량 강화를 위해 제작되었습니다.
+      </p>
       <p class="small">이미지 교체 경로: assets/thumb-01.png, assets/thumb-02.png, assets/thumb-03.png, assets/thumb-04.png</p>
       <div class="feedback">
         <a class="primary" href="#home">처음으로</a>
-        <a class="secondary" href="mailto:k04208@chosun.ac.kr">의견 보내기</a>
+        <a class="secondary" href="mailto:ai-support@example.edu">의견 보내기</a>
       </div>
     </div>
   </footer>
