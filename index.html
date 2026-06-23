@@ -3206,6 +3206,202 @@
       }
     }
 
+
+    /* ===== Apple-inspired dark mode palette ===== */
+    :root[data-theme="dark"] {
+      --bg: #1e1e1e;
+      --surface: #282828;
+      --surface-2: #3b3b3d;
+      --text: #f5f5f7;
+      --muted: #a1a1a6;
+      --line: rgba(255, 255, 255, 0.12);
+      --primary: #0a84ff;
+      --primary-2: #64d2ff;
+      --editorial-navy: #f5f5f7;
+      --editorial-blue: #64d2ff;
+      --shadow: 0 18px 42px rgba(0, 0, 0, 0.38);
+    }
+
+    :root[data-theme="dark"] body {
+      background:
+        radial-gradient(circle at 14% 6%, rgba(10, 132, 255, 0.10), transparent 30%),
+        radial-gradient(circle at 86% 16%, rgba(94, 92, 230, 0.10), transparent 28%),
+        linear-gradient(180deg, #1e1e1e 0%, #181818 100%);
+    }
+
+    :root[data-theme="dark"] .hero,
+    :root[data-theme="dark"] .detail-section {
+      background: #1e1e1e;
+      border-color: rgba(255, 255, 255, 0.10);
+    }
+
+    :root[data-theme="dark"] .detail-card,
+    :root[data-theme="dark"] main > .detail-section:nth-of-type(odd) .detail-card {
+      background: #1e1e1e;
+      border-bottom-color: rgba(255, 255, 255, 0.10);
+    }
+
+    :root[data-theme="dark"] .topbar {
+      background:
+        linear-gradient(
+          180deg,
+          rgba(var(--bar-r), var(--bar-g), var(--bar-b), 0.18) 0%,
+          rgba(30, 30, 30, 0.72) 48%,
+          rgba(30, 30, 30, 0.86) 100%
+        );
+      border-bottom-color: rgba(var(--bar-r), var(--bar-g), var(--bar-b), 0.26);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+    }
+
+    :root[data-theme="dark"] .topbar::before {
+      background:
+        radial-gradient(circle at 18% 50%, rgba(var(--bar-r), var(--bar-g), var(--bar-b), 0.18), transparent 34%),
+        radial-gradient(circle at 82% 28%, rgba(255, 255, 255, 0.08), transparent 26%);
+      opacity: 0.54;
+    }
+
+    :root[data-theme="dark"] .theme-toggle {
+      background: rgba(59, 59, 61, 0.76);
+      border-color: rgba(255, 255, 255, 0.14);
+      color: #f5f5f7;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+    }
+
+    :root[data-theme="dark"] .theme-toggle:hover {
+      background: rgba(72, 72, 74, 0.88);
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+
+    :root[data-theme="dark"] .level-banner {
+      background:
+        linear-gradient(180deg, rgba(40, 40, 40, 0.98) 0%, rgba(30, 30, 30, 0.98) 100%);
+      border-color: rgba(255, 255, 255, 0.11);
+    }
+
+    :root[data-theme="dark"] .level-banner::after {
+      background:
+        linear-gradient(90deg, rgba(var(--bar-r), var(--bar-g), var(--bar-b), 0.10), transparent 48%),
+        radial-gradient(circle at 88% 18%, rgba(var(--bar-r), var(--bar-g), var(--bar-b), 0.10), transparent 24%);
+    }
+
+    :root[data-theme="dark"] .level-kicker span,
+    :root[data-theme="dark"] .level-banner-index,
+    :root[data-theme="dark"] .level-badge,
+    :root[data-theme="dark"] .level-badge.green,
+    :root[data-theme="dark"] .level-badge.orange {
+      background: rgba(59, 59, 61, 0.78);
+      border-color: rgba(255, 255, 255, 0.14);
+      color: #f5f5f7;
+    }
+
+    :root[data-theme="dark"] .info-box,
+    :root[data-theme="dark"] .skill-card,
+    :root[data-theme="dark"] .model-card-compact,
+    :root[data-theme="dark"] .caution-box,
+    :root[data-theme="dark"] .example-box,
+    :root[data-theme="dark"] .model-guide {
+      background:
+        linear-gradient(180deg, rgba(59, 59, 61, 0.78) 0%, rgba(40, 40, 40, 0.96) 100%);
+      border-color: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);
+    }
+
+    :root[data-theme="dark"] .info-box:hover,
+    :root[data-theme="dark"] .skill-card:hover,
+    :root[data-theme="dark"] .model-card-compact:hover,
+    :root[data-theme="dark"] .caution-box:hover,
+    :root[data-theme="dark"] .example-box:hover,
+    :root[data-theme="dark"] .model-guide:hover {
+      border-color: rgba(var(--bar-r), var(--bar-g), var(--bar-b), 0.28);
+      box-shadow: 0 24px 44px rgba(0, 0, 0, 0.36);
+    }
+
+    :root[data-theme="dark"] .info-box li,
+    :root[data-theme="dark"] .caution-box li,
+    :root[data-theme="dark"] .model-guide li {
+      background: rgba(40, 40, 40, 0.88);
+      border-color: rgba(255, 255, 255, 0.10);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    :root[data-theme="dark"] .info-box ol li {
+      background:
+        linear-gradient(90deg, rgba(var(--bar-r), var(--bar-g), var(--bar-b), 0.16) 0%, rgba(40, 40, 40, 0.88) 30%, rgba(40, 40, 40, 0.96) 100%);
+    }
+
+    :root[data-theme="dark"] .letter-prompt {
+      background: #181818;
+      border-color: rgba(255, 255, 255, 0.12);
+    }
+
+    :root[data-theme="dark"] .letter-prompt-head {
+      background: #282828;
+      color: #f5f5f7;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+    }
+
+    :root[data-theme="dark"] .collapse-toggle {
+      background: #3b3b3d;
+    }
+
+    :root[data-theme="dark"] .collapse-toggle:hover {
+      background: #48484a;
+    }
+
+    :root[data-theme="dark"] .model-table tbody tr {
+      background: #282828;
+      border-color: rgba(255, 255, 255, 0.11);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.30);
+    }
+
+    :root[data-theme="dark"] .model-table tbody td,
+    :root[data-theme="dark"] .model-table tbody td:first-child,
+    :root[data-theme="dark"] .model-table tbody td:last-child {
+      border-color: rgba(255, 255, 255, 0.10);
+    }
+
+    :root[data-theme="dark"] .model-table tbody td:first-child {
+      background:
+        linear-gradient(90deg, rgba(var(--bar-r), var(--bar-g), var(--bar-b), 0.16) 0%, rgba(40, 40, 40, 0) 100%);
+      color: #f5f5f7;
+    }
+
+    :root[data-theme="dark"] .next-btn {
+      background: #f5f5f7;
+      color: #1e1e1e;
+      box-shadow: 0 16px 28px rgba(0, 0, 0, 0.28);
+    }
+
+    :root[data-theme="dark"] .next-btn:hover {
+      background: #0a84ff;
+      color: #ffffff;
+    }
+
+    :root[data-theme="dark"] .feedback .secondary {
+      background: rgba(59, 59, 61, 0.76);
+      color: #f5f5f7;
+      border-color: rgba(255, 255, 255, 0.13);
+    }
+
+    :root[data-theme="dark"] .footer-logo-strip {
+      background: rgba(40, 40, 40, 0.72);
+      border-color: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 20px 42px rgba(0, 0, 0, 0.34);
+    }
+
+    :root[data-theme="dark"] .top-btn {
+      background: #0a84ff;
+      box-shadow: 0 16px 34px rgba(10, 132, 255, 0.28);
+    }
+
+
+    /* ===== Final correction: 대학혁신지원사업 로고 배경 제거 ===== */
+    :root[data-theme="dark"] .footer-logo-innovation {
+      padding: 0 !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+    }
+
 </style>
 </head>
 
