@@ -6047,6 +6047,59 @@
       box-shadow: none !important;
     }
 
+
+    /* ===== Hero first-view balanced spacing: not too high, not too loose ===== */
+    @media (min-width: 861px) {
+      .hero {
+        min-height: calc(100vh - var(--topbar-expanded-height)) !important;
+        align-items: flex-start !important;
+        padding-top: clamp(46px, 4.4vw, 64px) !important;
+        padding-bottom: 72px !important;
+      }
+
+      .hero-head {
+        margin-bottom: 16px !important;
+      }
+
+      .hero .thumb-grid {
+        margin-top: 0 !important;
+      }
+
+      .prompt-notice-bar {
+        margin-top: 20px !important;
+      }
+
+      .section-jump-nav {
+        bottom: calc(14px + env(safe-area-inset-bottom)) !important;
+      }
+    }
+
+    @media (min-width: 1180px) and (max-height: 920px) {
+      .hero {
+        padding-top: 46px !important;
+        padding-bottom: 64px !important;
+      }
+
+      .hero-head {
+        margin-bottom: 16px !important;
+      }
+
+      .prompt-notice-bar {
+        margin-top: 18px !important;
+      }
+    }
+
+    @media (min-width: 1180px) and (max-height: 820px) {
+      .hero-thumb {
+        min-height: 405px !important;
+      }
+
+      .hero {
+        padding-top: 40px !important;
+        padding-bottom: 58px !important;
+      }
+    }
+
 </style>
 </head>
 
