@@ -7214,6 +7214,51 @@
       -webkit-tap-highlight-color: transparent;
     }
 
+
+    /* ===== Round dark-mode toggle: align with pill/circle UI language ===== */
+    .theme-toggle,
+    .topbar .theme-toggle,
+    .topbar.is-scrolled .theme-toggle {
+      width: 44px !important;
+      height: 44px !important;
+      min-width: 44px !important;
+      min-height: 44px !important;
+      border-radius: 999px !important;
+      display: inline-grid !important;
+      place-items: center !important;
+      padding: 0 !important;
+      box-sizing: border-box !important;
+      box-shadow: none !important;
+    }
+
+    .theme-toggle:hover,
+    .topbar .theme-toggle:hover,
+    .topbar.is-scrolled .theme-toggle:hover {
+      transform: translateY(-50%) !important;
+      box-shadow: none !important;
+    }
+
+    .theme-icon {
+      width: 17px !important;
+      height: 17px !important;
+    }
+
+    @media (max-width: 760px) {
+      .theme-toggle,
+      .topbar .theme-toggle,
+      .topbar.is-scrolled .theme-toggle {
+        width: 40px !important;
+        height: 40px !important;
+        min-width: 40px !important;
+        min-height: 40px !important;
+      }
+
+      .theme-icon {
+        width: 16px !important;
+        height: 16px !important;
+      }
+    }
+
 </style>
 </head>
 
