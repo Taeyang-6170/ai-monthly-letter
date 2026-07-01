@@ -7111,6 +7111,109 @@
       }
     }
 
+
+    /* ===== Notice plus/minus true center: draw symbol with bars ===== */
+    .notice-bar-hint {
+      position: relative !important;
+      display: inline-grid !important;
+      place-items: center !important;
+      width: 32px !important;
+      min-width: 32px !important;
+      height: 32px !important;
+      min-height: 32px !important;
+      padding: 0 !important;
+      font-size: 0 !important;
+      line-height: 0 !important;
+      text-indent: -9999px !important;
+      overflow: hidden !important;
+    }
+
+    .notice-bar-hint::before,
+    .notice-bar-hint::after {
+      content: "" !important;
+      position: absolute !important;
+      left: 50% !important;
+      top: 50% !important;
+      display: block !important;
+      background: currentColor !important;
+      border-radius: 999px !important;
+      transform: translate(-50%, -50%) !important;
+    }
+
+    .notice-bar-hint::before {
+      width: 13px !important;
+      height: 3px !important;
+    }
+
+    .notice-bar-hint::after {
+      width: 3px !important;
+      height: 13px !important;
+    }
+
+    .prompt-notice-bar[open] .notice-bar-hint::before {
+      content: "" !important;
+      width: 13px !important;
+      height: 3px !important;
+      font-size: 0 !important;
+      transform: translate(-50%, -50%) !important;
+    }
+
+    .prompt-notice-bar[open] .notice-bar-hint::after {
+      display: none !important;
+      content: none !important;
+    }
+
+    @media (max-width: 760px) {
+      .notice-bar-hint {
+        width: 30px !important;
+        min-width: 30px !important;
+        height: 30px !important;
+        min-height: 30px !important;
+      }
+
+      .notice-bar-hint::before {
+        width: 12px !important;
+        height: 3px !important;
+      }
+
+      .notice-bar-hint::after {
+        width: 3px !important;
+        height: 12px !important;
+      }
+    }
+
+
+    /* ===== Text drag/select prevention for published page ===== */
+    body,
+    body * {
+      -webkit-user-select: none !important;
+      -moz-user-select: none !important;
+      -ms-user-select: none !important;
+      user-select: none !important;
+      -webkit-touch-callout: none !important;
+    }
+
+    img,
+    svg,
+    video,
+    iframe {
+      -webkit-user-drag: none !important;
+      user-drag: none !important;
+    }
+
+    button,
+    a,
+    summary,
+    .letter-copy,
+    .collapse-toggle,
+    .demo-video-toggle,
+    .platform-fixed-pill,
+    .top-btn,
+    .section-jump-nav a,
+    .notice-preview p[data-notice-open] {
+      -webkit-tap-highlight-color: transparent;
+    }
+
 </style>
 </head>
 
@@ -8685,6 +8788,20 @@ no logo, no watermark, no cluttered background, no low resolution, no dark gloom
             toggleNotice(event);
           }
         });
+      });
+    })();
+  </script>
+
+
+  <script>
+    // Text selection and drag prevention
+    (function () {
+      document.addEventListener('selectstart', function (event) {
+        event.preventDefault();
+      });
+
+      document.addEventListener('dragstart', function (event) {
+        event.preventDefault();
       });
     })();
   </script>
