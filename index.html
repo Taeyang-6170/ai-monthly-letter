@@ -11,12 +11,12 @@
   <meta property="og:locale" content="ko_KR" />
   <meta property="og:title" content="AI, 어디까지 써봤니? 숨겨진 능력치 200% 끌어올리는 치트키 🎮" />
   <meta property="og:description" content="AI 플랫폼 활용 역량 강화를 위한 월간 프롬프트·모델 활용 안내" />
-  <meta property="og:url" content="https://taeyang-6170.github.io/ai-monthly-letter/" />
-  <meta property="og:image" content="https://taeyang-6170.github.io/ai-monthly-letter/assets/thumb-01.png" />
+  <meta property="og:url" content="https://chosun-6170.github.io/ai-monthly-letter/" />
+  <meta property="og:image" content="https://chosun-6170.github.io/ai-monthly-letter/assets/thumb-01.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="AI, 어디까지 써봤니? 숨겨진 능력치 200% 끌어올리는 치트키 🎮" />
   <meta name="twitter:description" content="AI 플랫폼 활용 역량 강화를 위한 월간 프롬프트·모델 활용 안내" />
-  <meta name="twitter:image" content="https://taeyang-6170.github.io/ai-monthly-letter/assets/thumb-01.png" />
+  <meta name="twitter:image" content="https://chosun-6170.github.io/ai-monthly-letter/assets/thumb-01.png" />
 
 
   <script>
@@ -7040,6 +7040,75 @@
         linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px),
         linear-gradient(180deg, rgba(255,255,255,0.07) 1px, transparent 1px) !important;
       background-size: auto, 42px 42px, 42px 42px !important;
+    }
+
+
+    /* ===== Final notice plus/minus centering + level banner balance + repo rename ===== */
+    .notice-bar-hint {
+      display: grid !important;
+      place-items: center !important;
+      width: 32px !important;
+      min-width: 32px !important;
+      height: 32px !important;
+      min-height: 32px !important;
+      padding: 0 !important;
+      font-size: 0 !important;
+      line-height: 1 !important;
+      text-align: center !important;
+    }
+
+    .notice-bar-hint::before {
+      content: "+" !important;
+      display: block !important;
+      font-size: 22px !important;
+      font-weight: 900 !important;
+      line-height: 1 !important;
+      transform: translateY(-1px);
+    }
+
+    .prompt-notice-bar[open] .notice-bar-hint::before {
+      content: "−" !important;
+      font-size: 24px !important;
+      line-height: 1 !important;
+      transform: translateY(-1px);
+    }
+
+    .level-banner {
+      padding-top: 28px !important;
+      padding-bottom: 34px !important;
+    }
+
+    .level-banner-inner {
+      align-items: center !important;
+    }
+
+    @media (max-width: 760px) {
+      .notice-bar-hint {
+        width: 30px !important;
+        min-width: 30px !important;
+        height: 30px !important;
+        min-height: 30px !important;
+      }
+
+      .notice-bar-hint::before {
+        font-size: 21px !important;
+      }
+
+      .prompt-notice-bar[open] .notice-bar-hint::before {
+        font-size: 23px !important;
+      }
+
+      .level-banner {
+        padding-top: 32px !important;
+        padding-bottom: 36px !important;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .level-banner {
+        padding-top: 30px !important;
+        padding-bottom: 34px !important;
+      }
     }
 
 </style>
